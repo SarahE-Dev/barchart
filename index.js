@@ -47,8 +47,8 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
        .attr('width', 10)
        .attr('height', d => height-yScale(d[1]))
        .style('fill', 'steelblue')
-       .attr('data-date', d => d[0]) // Add data-date property
-       .attr('data-gdp', d => d[1])  // Add data-gdp property
+       .attr('data-date', d => d[0]) 
+       .attr('data-gdp', d => d[1])  
        .on('mouseover', function(event, d) {
          tooltip.transition()
            .duration(200)
@@ -64,21 +64,21 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
            .style('opacity', 0);
        });
 
-    // Draw x-axis
+    
     svg.append('g')
-       .attr('id', 'x-axis') // Add ID for x-axis
+       .attr('id', 'x-axis') 
        .attr('transform', `translate(0,${height})`)
        .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat('%Y%-%d-%m')))
        .selectAll('text')
        .attr('transform', 'rotate(-45)')
        .style('text-anchor', 'end');
 
-    // Draw y-axis
+    
     svg.append('g')
-       .attr('id', 'y-axis') // Add ID for y-axis
+       .attr('id', 'y-axis')
        .call(d3.axisLeft(yScale));
 
-    // Append a tooltip div
+    
     const tooltip = d3.select('body')
                       .append('div')
                       .attr('id', 'tooltip')
